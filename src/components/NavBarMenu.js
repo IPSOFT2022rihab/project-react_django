@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar } from "react-bootstrap";
 import Nav from 'react-bootstrap/Nav';
+import { NavLink } from 'react-router-dom';
 const NavBarMenu  = () =>{
     return(
         <div>
@@ -9,8 +10,10 @@ const NavBarMenu  = () =>{
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
    
       <Nav className="me-auto">
-        <Nav.Link href="#home">Home</Nav.Link>
-        <Nav.Link href="#link">Link</Nav.Link>
+
+        <NavLink className="show-products-nav" to="">Products</NavLink>
+        <NavLink className="add-product-nav" to="/product">Add Product</NavLink>
+      
        
       </Nav>
     

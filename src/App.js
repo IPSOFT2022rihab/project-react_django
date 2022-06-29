@@ -11,7 +11,7 @@ function App() {
       <Router>
         <NavBarMenu/>
         <Routes>
-        <Route path="/addp" caseSensitive={false} element={<AddProduct />} />
+        <Route path="/product" caseSensitive={false} element={<AddProduct/>} />
         <Route path="/" caseSensitive={false} element={<ShowProducts/>} />
         </Routes>
       </Router>

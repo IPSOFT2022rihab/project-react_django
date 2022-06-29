@@ -36,3 +36,32 @@
     transform: rotate(360deg);
   }
 }
+.show-products-nav {
+  display: flex;
+  flex-direction: row; 
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 2px;
+
+}
+.add-product-nav{
+  display: flex;
+  flex-direction: row; 
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 2px;
+
+}
+.products-card-info{
+  display: flex;
+  flex-direction: row; 
+  margin-left: 10px;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  padding: 2px;
+}
