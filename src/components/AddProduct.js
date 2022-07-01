@@ -1,39 +1,43 @@
-import React, {useState,useHistory} from "react";
-import axios from 'axios' ;
+import React, {useEffect,useState} from "react";
 
-const AddProduct  = () =>{
-    const[image,setImage] = useState(null)
-    const[name,setName] = useState("")
-    const[price,setPrice] = useState("")
-    const[description,setDescription] = useState("")
-    const[category,setCategory] = useState("")
-    const history = useHistory();
+function Ajouterproduit() {
 
-    const addNewStudent = async () => {
-        let formField = new FormData()
-        formField.append('name',name)
-        formField.append('price',price)
-        formField.append('description',description)
-        formField.append('category',category)
+    const [name, setName] = useState('');
+    const [price, setPrice] = useState('');
+    const [description, setDescription] = useState('');
+    const [category, setCategory] = useState('');
+    const[image,setImage]=useState(null);
 
-        if(image !== null) {
-            formField.append('image', image)
-          }
+     const handlesubmit = (e) => {
+        console.log(image)
+        const formdata=new FormData()
+        formdata.append("name",name)  
+        formdata.append("price",price)
+        formdata.append("description",description)
+        formdata.append("category",category)
+        formdata.append("image",image)
 
-          
-        await axios({
-            method: 'post',
-            url:'http://127.0.0.1:8000/product/',
-            data: formField
-          }).then(response=>{
-            console.log(response.data);
-            history.push('/')
-          })
+         if (image === null) {
+           } else {
+           formdata.append("image",image)
+                  }
+           console.log(typeof image)
+             e.preventDefault()
   
-
-
-
+    fetch("http://127.0.0.1:8000/product/",
+      {
+        method: "POST",
+    
+        body: formdata
+      }).then(() => {
+           console.log(formdata);
+         
+        }).catch((e) => {
+  
+          alert('error!!')
+        })
     }
+   
     return(
         <div>
            <h1>add product</h1>
@@ -44,10 +48,10 @@ const AddProduct  = () =>{
                 <input
               type="file"
               className="form-control form-control-lg"
-              placeholder="Enter Your image"
+              placeholder="Enter Your Image"
               name="image"
-              value={image}
-              onChange={(e) => setImage(e.target.files[0])}
+              
+              onChange={(event)=>{setImage(event.target.files[0])}}
             />
 
                 <input
@@ -58,7 +62,6 @@ const AddProduct  = () =>{
               value={name}
               onChange={(e) => setName(e.target.value)}
             />
-
 
               <input
               type="text"
@@ -86,12 +89,8 @@ const AddProduct  = () =>{
               value={category}
               onChange={(e) => setCategory(e.target.value)}
             />
-
-
-
-
-                </div>
-                <button className="btn btn-primary btn-block" onClick={addNewStudent}>Add Student</button>
+             </div>
+                <button className="btn btn-primary btn-block"  type="submit" onClick={handlesubmit}>Add Product</button>
 
             </div>
 
@@ -102,4 +101,4 @@ const AddProduct  = () =>{
 
     );
       };
-export default AddProduct;
+export default Ajouterproduit;

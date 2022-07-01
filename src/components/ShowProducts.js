@@ -2,6 +2,7 @@ import React, {useState , useEffect} from "react";
 import axios from 'axios' ;
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
+import { Link } from 'react-router-dom';
 
 const ShowProducts  = () =>{
 
@@ -17,6 +18,9 @@ const ShowProducts  = () =>{
 
     useEffect( () =>{
         getProducts();} ,[] )
+        const goToDetail = () => {
+          alert("detail page")
+      }
 
     return(
         <div className="products-card-info">
@@ -33,7 +37,8 @@ const ShowProducts  = () =>{
                             <Card.Text>{product.description}</Card.Text>
                             <Card.Text>{product.category}</Card.Text>
 
-                            <Button variant="primary">show details</Button>
+                            <Link className="btn btn-primary mr-2" to={`/${product.id}`}>Full Detail</Link>
+
                           </Card.Body>
                         </Card>
                       
